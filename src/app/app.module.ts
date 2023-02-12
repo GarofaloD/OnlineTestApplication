@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {WelcomeComponent} from "../components/welcome/welcome.component";
 import {QuestionComponent} from "../components/question/question.component";
 import {HeaderComponent} from "../components/header/header.component";
+import {QuestionListComponent} from "../components/question-list/question-list.component";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {HeaderComponent} from "../components/header/header.component";
     AppComponent,
     WelcomeComponent,
     QuestionComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuestionListComponent
   ],
   imports: [
     BrowserModule,
