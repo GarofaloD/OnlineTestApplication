@@ -7,6 +7,7 @@ import {WelcomeComponent} from "../components/welcome/welcome.component";
 import {QuestionComponent} from "../components/question/question.component";
 import {HeaderComponent} from "../components/header/header.component";
 import {QuestionListComponent} from "../components/question-list/question-list.component";
+import {HttpClientModule} from  "@angular/common/http";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {QuestionListComponent} from "../components/question-list/question-list.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
