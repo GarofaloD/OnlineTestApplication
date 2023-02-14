@@ -1,0 +1,15 @@
+.option-card{
+  max-width: fit-content;
+
+}
+
+.option-card:hover{
+  background-color: lightgreen;
+  border: 1px solid;
+
+}
+
+.option-card .card{
+  background-color: transparent !important;
+  border: none;
+}

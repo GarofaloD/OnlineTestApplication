@@ -8,7 +8,8 @@ import {QuestionComponent} from "../components/question/question.component";
 import {HeaderComponent} from "../components/header/header.component";
 import {QuestionListComponent} from "../components/question-list/question-list.component";
 import {HttpClientModule} from  "@angular/common/http";
-
+import {QuestionsService} from "../services/questions.service";
+import {RouterModule, Routes} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {HttpClientModule} from  "@angular/common/http";
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
