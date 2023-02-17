@@ -1,11 +1,13 @@
-<div class="container">
-  <div class="card">
-    <div class="d-flex flex-column">
+
+<div onload="shuffleOptions()" class="container">
+  <div class="">
+    <form class="d-flex flex-column questionnaireForm">
+
 
       <div *ngFor="let tempQuestion of questionsList">
         <div class="quiz-header">
           <div class="question-remain">
-            <h3>Question {{questionsList.indexOf(tempQuestion) + 1}} of 10</h3>
+            <h3>Question {{questionsList.indexOf(tempQuestion) + 1}} of {{questionsList.length}}</h3>
           </div>
         </div>
         <div class="question">
@@ -13,27 +15,30 @@
             <h3>{{tempQuestion.question}}</h3>
           </div>
         </div>
-        <div class="options">
-          <ol>
-            <li class="option-card"><div class="card">{{tempQuestion.correctAnswer}}</div></li>
-            <li class="option-card"><div class="card">{{tempQuestion.incorrectAnswers[0]}}</div></li>
-            <li class="option-card"><div class="card">{{tempQuestion.incorrectAnswers[1]}}</div></li>
-            <li class="option-card"><div class="card">{{tempQuestion.incorrectAnswers[2]}}</div></li>
-
-          </ol>
+        <div  class="options">
+          <ul  style="list-style: none; padding-left: 0px">
+            <li class="option-card">
+              <input (click)="addPoints()" name='action' class='correct' type="radio"><label>{{tempQuestion.correctAnswer}}</label>
+            </li>
+            <li class="option-card">
+              <input name='action' type="radio"><label>{{tempQuestion.incorrectAnswers[0]}}</label>
+            </li>
+            <li class="option-card">
+              <input name='action' type="radio"><label>{{tempQuestion.incorrectAnswers[1]}}</label>
+            </li>
+            <li class="option-card">
+              <input  name='action' type="radio"><label>{{tempQuestion.incorrectAnswers[2]}}</label>
+            </li>
+          </ul>
         </div>
-      </div>
-
-
-
-
-      <div class="d-flex justify-content-between">
 
       </div>
+
+      <input class='completeButton' type="submit" value="Complete test">
 
 <!--      <p *ngFor="let tempQuestion of questionsList">Question</p>-->
 
-    </div>
+    </form>
   </div>
 </div>
 

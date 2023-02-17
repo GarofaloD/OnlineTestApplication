@@ -45,7 +45,20 @@ export class QuestionListComponent{
   }
 
 
+  shuffleOptions(){
+    let listToShuffle = document.querySelector('.options ul')
+    // @ts-ignore
+    for (let i = listToShuffle.children.length; i >= 0; i--) {
+      // @ts-ignore
+      listToShuffle.appendChild(listToShuffle.children[Math.random() * i | 0]);
+    }
+  }
 
+  addPoints(){
+    this.points = this.points + 1;
+    console.log('right answer')
+    console.log(this.points)
+  }
 
 
 

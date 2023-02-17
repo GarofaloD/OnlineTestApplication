@@ -1,15 +1,24 @@
-.option-card {
-  max-width: fit-content;
+.questionnaireForm {
+  padding: 50px 0;
 }
 
-.option-card:hover {
-  background-color: lightgreen;
-  border: 1px solid;
+.option-card {
+  max-width: fit-content;
 }
 
 .option-card .card {
   background-color: transparent !important;
   border: none;
+}
+
+.options .option-card label {
+  padding-left: 10px;
+}
+
+.completeButton {
+  margin-top: 20px;
+  width: 250px;
+  align-self: end;
 }
 
 /*# sourceMappingURL=question-list.component.css.map */
