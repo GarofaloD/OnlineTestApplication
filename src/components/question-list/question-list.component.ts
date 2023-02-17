@@ -9,36 +9,40 @@ import {tap} from "rxjs";
   styleUrls: ['./question-list.component.scss']
 })
 export class QuestionListComponent{
-  //
-  questionsList: any = []
 
-  constructor(private questions:QuestionsService) {
-    this.questions.getDataQuestions().subscribe(data =>{
-      console.warn(data)
-      this.questionsList = data;
-    })
-  }
+  public questionsList: any = []
+  public points: number = 0
+
+
+  //
+  // constructor(private questions:QuestionsService) {
+  //   this.questions.getDataQuestions().subscribe(data =>{
+  //     console.warn(data)
+  //     this.questionsList = data;
+  //
+  //   })
+  // }
 
 
 
   // questions: Question[] = []
   //
-  // constructor(private questionService: QuestionsService) {
-  //
-  // }
-  //
-  // ngOnInit(): void{
-  //   this.listQuestions()
-  // }
-  //
-  // listQuestions(){
-  //   this.questionService.getDataQuestions().subscribe(
-  //     data => {
-  //
-  //       this.questions = data;
-  //     }
-  //   )
-  // }
+  constructor(private questionService: QuestionsService) {
+
+  }
+
+  ngOnInit(): void{
+    this.listQuestions()
+  }
+
+  listQuestions(){
+    this.questionService.getDataQuestions().subscribe(
+      data => {
+        console.warn(data)
+        this.questionsList = data;
+      }
+    )
+  }
 
 
 

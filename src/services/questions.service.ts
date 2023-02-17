@@ -25,8 +25,11 @@ export class QuestionsService {
    //
    //   );
    // }
+
+
+
 }
- //
+
  // interface GetResponse{
  //   _embedded:{
  //     questions: Question[];

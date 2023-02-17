@@ -5,7 +5,7 @@
       <div *ngFor="let tempQuestion of questionsList">
         <div class="quiz-header">
           <div class="question-remain">
-            <h3>Question 1 of 10</h3>
+            <h3>Question {{questionsList.indexOf(tempQuestion) + 1}} of 10</h3>
           </div>
         </div>
         <div class="question">
