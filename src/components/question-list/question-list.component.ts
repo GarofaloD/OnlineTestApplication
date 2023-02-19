@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {QuestionsService} from "../../services/questions.service";
 import {Question} from "../../common/question/question";
 import {tap} from "rxjs";
+import {ResultserviceService} from "../../services/resultservice.service";
+import {Result} from "../../common/result/result";
 
 @Component({
   selector: 'app-question-list',
@@ -12,7 +14,9 @@ export class QuestionListComponent{
 
   public questionsList: any = []
   public points: number = 0
+  public rightAnswerCount: number = 0
 
+  //messageTest = "Coming from the question list"
 
   //
   // constructor(private questions:QuestionsService) {
@@ -27,19 +31,26 @@ export class QuestionListComponent{
 
   // questions: Question[] = []
   //
-  constructor(private questionService: QuestionsService) {
+  constructor(private questionService: QuestionsService, private resultService: ResultserviceService) {
 
   }
 
   ngOnInit(): void{
     this.listQuestions()
+    // this.passResults()
+    //this.resultService.setMessage(this.messageTest)
   }
 
   listQuestions(){
+
     this.questionService.getDataQuestions().subscribe(
       data => {
-        console.warn(data)
         this.questionsList = data;
+        console.log(this.questionsList)
+
+        for (let i = 0; i < this.questionsList.length; i++) {
+          console.log(this.questionsList[i]["correctAnswer"])
+        }
       }
     )
   }
@@ -56,9 +67,25 @@ export class QuestionListComponent{
 
   addPoints(){
     this.points = this.points + 1;
-    console.log('right answer')
-    console.log(this.points)
+    console.log('right Answer')
+    this.rightAnswerCount++
+    console.log(this.rightAnswerCount)
   }
+
+  computeResults(){
+
+    let result = new Result();
+    result.score = this.points;
+    result.correctAnswer = this.rightAnswerCount
+    result.wrongAnswer = this.questionsList.length - this.rightAnswerCount
+    this.resultService.setmessage(result)
+
+  }
+
+
+
+
+
 
 
 

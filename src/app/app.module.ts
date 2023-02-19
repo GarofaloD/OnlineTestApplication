@@ -10,6 +10,7 @@ import {QuestionListComponent} from "../components/question-list/question-list.c
 import {HttpClientModule} from  "@angular/common/http";
 import {QuestionsService} from "../services/questions.service";
 import {RouterModule, Routes} from "@angular/router";
+import {ResultsComponent} from "../components/results/results.component";
 
 @NgModule({
   declarations: [
@@ -17,14 +18,15 @@ import {RouterModule, Routes} from "@angular/router";
     WelcomeComponent,
     QuestionComponent,
     HeaderComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [QuestionsService],
+  providers: [QuestionsService, QuestionListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
