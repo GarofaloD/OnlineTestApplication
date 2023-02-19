@@ -11,7 +11,6 @@ const routes: Routes = [
   {path:"welcome", component: WelcomeComponent},
   {path:"question-list", component: QuestionListComponent},
   {path:"quiz-results", component: ResultsComponent},
-  {path:"question", component: QuestionComponent},
   {path:" ", redirectTo: 'welcome', pathMatch: 'full'},
   {path:"**", redirectTo: 'welcome', pathMatch: 'full'}
 ];

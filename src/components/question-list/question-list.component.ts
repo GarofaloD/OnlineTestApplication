@@ -16,21 +16,8 @@ export class QuestionListComponent{
   public points: number = 0
   public rightAnswerCount: number = 0
 
-  //messageTest = "Coming from the question list"
-
-  //
-  // constructor(private questions:QuestionsService) {
-  //   this.questions.getDataQuestions().subscribe(data =>{
-  //     console.warn(data)
-  //     this.questionsList = data;
-  //
-  //   })
-  // }
 
 
-
-  // questions: Question[] = []
-  //
   constructor(private questionService: QuestionsService, private resultService: ResultserviceService) {
 
   }
@@ -39,37 +26,44 @@ export class QuestionListComponent{
     this.listQuestions()
     // this.passResults()
     //this.resultService.setMessage(this.messageTest)
+    this.shuffleOptions()
   }
 
   listQuestions(){
-
     this.questionService.getDataQuestions().subscribe(
       data => {
         this.questionsList = data;
         console.log(this.questionsList)
 
-        for (let i = 0; i < this.questionsList.length; i++) {
-          console.log(this.questionsList[i]["correctAnswer"])
-        }
       }
     )
   }
 
 
   shuffleOptions(){
-    let listToShuffle = document.querySelector('.options ul')
-    // @ts-ignore
-    for (let i = listToShuffle.children.length; i >= 0; i--) {
-      // @ts-ignore
-      listToShuffle.appendChild(listToShuffle.children[Math.random() * i | 0]);
-    }
+
+    document.addEventListener("DOMContentLoaded", (event)=>{
+
+      setTimeout(function (){
+
+        let listToShuffle = document.querySelectorAll('.options ul').forEach(item=>{
+          for (let i = item.children.length; i >= 0; i--) {
+            item.appendChild(item.children[Math.random() * i | 0]);
+          }
+        })
+
+      },1000)
+
+    })
   }
+
+
+
+
 
   addPoints(){
     this.points = this.points + 1;
-    console.log('right Answer')
     this.rightAnswerCount++
-    console.log(this.rightAnswerCount)
   }
 
   computeResults(){

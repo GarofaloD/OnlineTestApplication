@@ -21,20 +21,6 @@ export class QuestionsService {
 
 
 
-
-   // getDataQuestions(): Observable<Question[]>{
-   //   return this.http.get<GetResponse>(this.baseURL).pipe(
-   //     map(response => response._embedded.questions)
-   //
-   //   );
-   // }
-
-
-
 }
 
- // interface GetResponse{
- //   _embedded:{
- //     questions: Question[];
- //   }
- // }
+
