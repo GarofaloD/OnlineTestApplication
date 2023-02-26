@@ -4,7 +4,7 @@
     <form class="d-flex flex-column questionnaireForm">
 
 
-      <div *ngFor="let tempQuestion of questionsList">
+      <div *ngFor="let tempQuestion of questionsList" (load)="shuffleOptions()">
         <div class="quiz-header">
           <div class="question-remain">
             <h3>Question {{questionsList.indexOf(tempQuestion) + 1}} of {{questionsList.length}}</h3>

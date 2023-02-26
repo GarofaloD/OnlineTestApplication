@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit, AfterViewInit} from '@angular/core';
 import {QuestionsService} from "../../services/questions.service";
 import {Question} from "../../common/question/question";
 import {tap} from "rxjs";
@@ -10,7 +10,7 @@ import {Result} from "../../common/result/result";
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
 })
-export class QuestionListComponent{
+export class QuestionListComponent implements OnInit, AfterViewInit{
 
   public questionsList: any = []
   public points: number = 0
@@ -26,35 +26,56 @@ export class QuestionListComponent{
     this.listQuestions()
     // this.passResults()
     //this.resultService.setMessage(this.messageTest)
-    this.shuffleOptions()
+    //this.shuffleOptions()
   }
 
   listQuestions(){
     this.questionService.getDataQuestions().subscribe(
       data => {
         this.questionsList = data;
-        console.log(this.questionsList)
-
       }
     )
+    console.log('loaded')
   }
 
-
-  shuffleOptions(){
-
-    document.addEventListener("DOMContentLoaded", (event)=>{
+  ngAfterViewInit() {
 
       setTimeout(function (){
 
-        let listToShuffle = document.querySelectorAll('.options ul').forEach(item=>{
+        document.querySelectorAll('.options ul').forEach(item=>{
           for (let i = item.children.length; i >= 0; i--) {
             item.appendChild(item.children[Math.random() * i | 0]);
           }
         })
+        console.log('shufflesfdsdfsdfd')
+      },300)
 
-      },1000)
 
-    })
+  }
+
+
+  shuffleOptions(){
+    //
+    // document.addEventListener("DOMContentLoaded", (event)=>{
+    //
+    //   setTimeout(function (){
+    //
+    //     document.querySelectorAll('.options ul').forEach(item=>{
+    //       for (let i = item.children.length; i >= 0; i--) {
+    //         item.appendChild(item.children[Math.random() * i | 0]);
+    //       }
+    //     })
+    //
+    //   },5000)
+    //   console.log('shuffled')
+    // })
+
+    // document.querySelectorAll('.options ul').forEach(item=>{
+    //   for (let i = item.children.length; i >= 0; i--) {
+    //     item.appendChild(item.children[Math.random() * i | 0]);
+    //   }
+    // })
+
   }
 
 
